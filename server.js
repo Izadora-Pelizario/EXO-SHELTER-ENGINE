@@ -98,3 +98,28 @@ class OrganicPet extends Criatura{
         console.log(`DIETA: ${this.dieta}`);
     }
 }
+//TEST//
+try {
+    console.log("INICIANDO DIAGNÓSTICO...\n");
+
+    //1-INSTANCIA DO HABITAT//
+    const habitatMarte = new Habitat(101, "DOMO VERMELHO - MARTE");
+    console.log(`✔ HABITAT "${habitatMarte.nomeHabitat}" ESTABELECIDO COM SUCESSO!`);
+
+    //2-ARRAY HETEROGÊNEO DE HABITATS//
+    const abrigoCriaturas = [
+        new CyberPet(1, "Robo-Dog 3000", habitatMarte.idHabitat, 85),
+        new OrganicPet(2, "Xenomorph Baby", habitatMarte.idHabitat, "CARNÍVORO"),
+        new CyberPet(3, "Mecha-Urso", habitatMarte.idHabitat, 42),
+        new OrganicPet(4, "Groot", habitatMarte.idHabitat, "HERBÍVORO")
+    ];
+    console.log("\nEXIBINDO MAPA DE CRIATURAS (POLIMORFISMO EM AÇÃO)\n");
+    abrigoCriaturas.forEach(criatura => criatura.exibir());
+    console.log("\nTESTE VALIDAÇÃO E ENCAPSULAMENTO...");
+
+    //TESTE 1 BATERIA INVÁLIDA//
+    console.log("\nTESTE DE BATERIA ABAIXO DO LIMITE...");
+    abrigoCriaturas[21].nivelBateria = -10;
+} catch (error) {
+    console.log(`\nSISTEMA BARRADO COM SUCESSO!: ${error.message}`);
+}
